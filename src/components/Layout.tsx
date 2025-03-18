@@ -1,6 +1,6 @@
 // Layout.tsx - 웹페이지 전체 레이아웃을 담당하는 컴포넌트.
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "./Header";
+import Footer from "./Footer";
 import { ReactNode } from "react";
 
 interface LayoutProps {
