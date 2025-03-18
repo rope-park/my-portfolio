@@ -1,0 +1,115 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+/* 다크 모드 및 전역 색상 변수 설정 */
+@layer base {
+  :root {
+    /* 라이트 모드 색상 */
+    --color-background: rgb(255, 255, 255);
+    --color-text: rgb(30, 30, 30);
+    --color-primary: rgb(59, 130, 246);
+    --color-secondary: rgb(244, 63, 94);
+    --font-family: 'Nanum Gothic', sans-serif;
+  }
+
+  /* 다크 모드 자동 감지 */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-background: rgb(18, 18, 18);
+      --color-text: rgb(235, 235, 235);
+      --color-primary: rgb(96, 165, 250);
+      --color-secondary: rgb(248, 113, 113);
+    }
+  }
+
+  /* 다크 모드 클래스 적용 */
+  .dark {
+    --color-background: rgb(18, 18, 18);
+    --color-text: rgb(235, 235, 235);
+    --color-primary: rgb(96, 165, 250);
+    --color-secondary: rgb(248, 113, 113);
+  }
+}
+
+
+/* CSS 리셋 (기본 스타일 초기화) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* HTML 요소 스타일링 */
+/* 전체 페이지 스타일 */
+html,
+body {
+  font-family: var(--font-family), sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  @apply h-full w-full bg-rgb(var(--color-background)) text-rgb(var(--color-text)) leading-relaxed antialiased;
+}
+
+/* 링크 스타일 */
+a {
+  @apply text-rgb(var(--color-primary)) hover:text-rgb(var(--color-secondary)) transition-colors;
+}
+
+/* 헤딩 스타일 */
+h1 {
+  @apply text-3xl font-bold text-rgb(var(--color-text));
+}
+
+h2 {
+  @apply text-2xl font-semibold;
+}
+
+h3 {
+  @apply text-xl font-medium;
+}
+
+/* 텍스트 스타일 */
+p {
+  @apply text-rgb(var(--color-text)) font-sans;
+}
+
+/* 버튼 스타일 */
+button {
+  @apply inline-block px-4 py-2 text-lg font-medium text-white bg-rgb(var(--color-primary)) rounded-md shadow-md 
+         hover:bg-rgb(var(--color-secondary)) transition-colors focus:ring-2 focus:ring-rgb(var(--color-secondary)) focus:outline-none;
+}
+
+ul {
+  @apply list-disc ml-5;
+}
+
+
+/* 반응형 설정 (기본적인 미디어 쿼리) */
+@media (max-width: 1279px) {
+  body {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 1023px) {
+  body {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 479px) {
+  body {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+}
