@@ -4,7 +4,8 @@ import Layout from "../components/Layout";
 
 function Projects() {
     <Layout>
-        <section className="display-flex px-1rem py-1rem justify-center min-width-0 fill-width position-relative"></section>
+        <section className="flex px-[1rem] py-[1rem] justify-center min-w-0 w-full position-relative"></section>
+    
     </Layout>
 }
 

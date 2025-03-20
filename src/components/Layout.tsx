@@ -9,9 +9,9 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="flex p-0 m-0 flex-col min-w-0 w-full min-h-[100vh] overflow-auto">
+    <div className="grid grid-rows-[auto, 1fr, auto] w-full min-w-0 min-h-screen overflow-auto relative">
       <Header />
-      <main className="flex-row">{children}</main>
+      <main className="grid grid-cols-[auto] w-full min-w-0 min-h-screen px-6 py-6 m-0 overflow-auto">{children}</main>
       <Footer />
     </div>
   );

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @tailwind utilities;
-@custom-variant dark (&:where(.dark, .dark *));
 
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* 다크 모드 및 전역 색상 변수 설정 */
 @layer base {
@@ -41,14 +41,10 @@
   }
 }
 
-
-/* CSS 리셋 (기본 스타일 초기화) */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* 전역 컨테이너 클래스 */
+.container {
+  @apply px-4 mx-auto max-w-7xl;
 }
-
 
 /* HTML 요소 스타일링 */
 /* 전체 페이지 스타일 */
@@ -60,9 +56,14 @@ body {
   @apply h-full w-full bg-[rgb(var(--color-background))] text-[rgb(var(--color-text))] leading-relaxed antialiased;
 }
 
+/* 이미지 스타일 */
+img {
+  @apply h-auto max-w-full;
+}
+
 /* 링크 스타일 */
 a {
-  @apply text-[rgb(var(--color-primary))] hover:text-[rgb(var(--color-secondary))] transition-colors;
+  @apply text-[rgb(var(--color-primary))] hover:text-[rgb(var(--color-secondary))] transition-colors focus:outline-none;
 }
 
 /* 헤딩 스타일 */
@@ -89,8 +90,9 @@ button {
          hover:bg-[rgb(var(--color-secondary))] transition-colors focus:ring-2 focus:ring-[rgb(var(--color-secondary))] focus:outline-none;
 }
 
+/* 리스트 스타일 */
 ul {
-  @apply list-disc ml-5;
+  @apply ml-5 list-disc;
 }
 
 
@@ -126,5 +128,8 @@ ul {
   body {
     font-size: 12px;
     line-height: 1.4;
+  }
+  .xs-flex-hide {
+    display: none!important;
   }
 }
