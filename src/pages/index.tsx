@@ -5,7 +5,6 @@ import Layout from "../components/Layout";
 function Home() {
     return (
         <Layout>
-
             {/* 대문 문구 섹션 */}
             <section className="py-20 text-left">
                 <div className="container">
