@@ -21,7 +21,7 @@ const Navigation = () => {
     return (
         <>
             {/* 데스크탑 네비게이션 (768px 이상) */}
-            <nav className="items-center justify-center hidden md:flex backdrop-blur-md bg-white/80 dark:bg-black/80">
+            <nav className="items-center justify-center hidden text-gray-900 md:flex backdrop-blur-md bg-white/80 dark:bg-black/80 dark:text-white">
                 <ul className="flex space-x-4 md:space-x-6 lg:space-x-8">
                     {navItems.map((item) => (
                         <li key={item.href}>
