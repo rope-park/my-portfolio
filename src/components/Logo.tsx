@@ -10,7 +10,7 @@ const Logo = () => {
             className="flex items-center space-x-2 cursor-pointer"
         >
             {/* 모바일 및 데스크탑 대응 (svg 또는 이미지 사용 가능) */}
-            <div className="relative w-10 h-10 md:w-12 md:h-12">
+            <div className="relative z-50 w-10 h-10 md:w-12 md:h-12">
             </div>
             <span className="text-lg font-semibold tracking-wide text-gray-900 md:text-xl dark:text-white">
                 My Portfolio
