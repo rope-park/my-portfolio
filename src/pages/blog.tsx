@@ -1,6 +1,4 @@
-// blog.tsx - 블로그 목록 화면.
-
-"use client";
+// pages/blog.tsx - 블로그 목록 화면.
 
 import { useState } from "react";
 import Layout from "../components/Layout";
@@ -8,6 +6,7 @@ import BlogCard from "../components/BlogCard";
 import Filter from "../components/Filter";
 import Sort from "../components/Sort";
 
+// 블로그 포스트 데이터 타입 정의
 interface BlogPost {
     id: number; // 블로그 포스트 ID
     date: string; // 블로그 포스트 작성 날짜
@@ -53,11 +52,12 @@ const dummyBlogs: BlogPost[] = [
 ];
 
 function Blog() {
-    // 필터 및 정렬 전용 상태
+    // 필터와 정렬이 적용된 블로그 포스트 목록을 상태로 관리
     const [filteredBlogs, setFilteredBlogs] = useState(dummyBlogs);
+    // 선택된 정렬 기준을 저장하는 상태
     const [, setSortOrder] = useState("latest");
 
-    // availableTechs: 모든 블로그 포스트에서 고유한 기술 스택을 추출
+    // availableTechs: 모든 블로그 포스트에서 고유한 기술 스택 목록 추출
     const availableTechs = Array.from(
         new Set(dummyBlogs.flatMap((blog) => blog.techStack))
     );
