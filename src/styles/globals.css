@@ -11,7 +11,7 @@
     --color-text: rgb(30, 30, 30);
     --color-primary: rgb(59, 130, 246);
     --color-secondary: rgb(244, 63, 94);
-    --font-family: 'Nanum Gothic', sans-serif;
+    --font-family: 'Noto Sans', 'Nanum Gothic', sans-serif;
   }
 
   /* 다크 모드 자동 감지 */
@@ -38,6 +38,13 @@
   .background-mask {
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
+  }
+}
+
+/* 유틸리티 클래스 */
+@layer utilities {
+  .shadow-text {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -81,14 +88,15 @@ h3 {
 
 /* 텍스트 스타일 */
 p {
-  @apply text-[rgb(var(--color-text))] font-sans;
+  @apply text-[rgb(var(--color-text))] ;
 }
 
-/* 버튼 스타일 */
+/*
 button {
   @apply inline-block px-4 py-2 text-lg font-medium text-white bg-[rgb(var(--color-primary))] rounded-md shadow-md
-         hover:bg-[rgb(var(--color-secondary))] transition-colors focus:ring-2 focus:ring-[rgb(var(--color-secondary))] focus:outline-none;
+         hover:bg-[rgb(var(--color-secondary))] transition-colors focus:ring-2 focus:ring-[rgb(var(--color-secondary))] focus:outline-none cursor-pointer;
 }
+*/
 
 /* 리스트 스타일 */
 ul {
