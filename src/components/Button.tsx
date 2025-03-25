@@ -20,7 +20,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 /**
  * 재사용 가능한 버튼 컴포넌트.
- * 다양한 variant와 size를 지원하여 여러 상황에서 쉽게 활용할 수 있습니다.
+ * 다양한 variant와 size를 지원하여 여러 상황에서 쉽게 활용 가능.
  *
  * @param {string} variant - 버튼 스타일 유형 (기본: primary)
  * @param {string} size - 버튼 크기 (기본: md)
@@ -45,7 +45,7 @@ const Button = ({
 }: ButtonProps) => {
     // 기본 버튼 스타일: 레이아웃, 정렬, 모서리 둥글기, 포커스 효과 등
     const baseClasses =
-        "inline-flex items-center justify-center font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ";
+        "inline-flex items-center justify-center font-medium rounded-md transition-all duration-200 active:border-gray-300 cursor-pointer";
 
     // 버튼 스타일에 따른 클래스 추가
     const variantClasses: Record<Variant, string> = {
