@@ -1,7 +1,9 @@
 // Toggle.tsx - 토글 컴포넌트. 다크 모드 전환 버튼 등.
 
+"use client";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import Button from "./Button";
 import { MoonIcon, SunIcon } from "@heroicons/react/20/solid";
 
 const Toggle = () => {
@@ -19,22 +21,20 @@ const Toggle = () => {
     const currentTheme = theme === "system" ? systemTheme : theme;
 
     return (
-        <button
-            className="p-2 transition-colors border border-gray-400 rounded-md dark:border-gray-500"
+        <Button
+            variant="ghost"
+            size="sm"
             onClick={() => setTheme(currentTheme === "light" ? "dark" : "light")}
             aria-label="Toggle Dark Mode"
-        >
-            {mounted ? (
+            icon={
                 currentTheme === "light" ? (
-                    <MoonIcon className="w-6 h-6 text-gray-800 dark:text-gray-200" />
+                    <MoonIcon className="w-6 h-6" style={{ color: "rgb(var(--color-text))" }} />
                 ) : (
-                    <SunIcon className="w-6 h-6 text-yellow-400 dark:text-yellow-400" />
+                    <SunIcon className="w-6 h-6 text-yellow-400" />
                 )
-            ) : (
-                <div className="w-6 h-6 border border-gray-400 rounded-full animate-pulse" />
-                // 토글 버튼이 표시되기 전까지는 회색 원 형태의 플래싱 애니메이션 표시.
-            )}
-        </button>
+            }
+            iconType="Icon"
+        />
     );
 };
 
