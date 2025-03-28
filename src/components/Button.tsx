@@ -50,15 +50,15 @@ const Button = ({
     // 버튼 스타일에 따른 클래스 추가
     const variantClasses: Record<Variant, string> = {
         primary:
-            "text-white bg-blue-600 border border-transparent shadow-sm hover:bg-blue-700 focus:ring-blue-500 disabled:opacity-50",
+            "text-[rgb(var(--color-text))] bg-[rgb(var(--color-primary))] border border-transparent shadow-sm hover:bg-[rgb(var(--color-secondary))] focus:ring-[rgb(var(--color-secondary))] disabled:opacity-50 cursor-pointer",
         secondary:
-            "text-white bg-gray-600 border border-transparent shadow-sm hover:bg-gray-700 focus:ring-gray-500 disabled:opacity-50",
+            "text-white bg-[rgb(var(--color-text))] border border-transparent shadow-sm hover:bg-[rgb(var(--color-secondary))] focus:ring-[rgb(var(--color-secondary))] disabled:opacity-50 cursor-pointer",
         outline:
-            "text-gray-700 bg-gray-300 border border-transparent shadow-sm hover:bg-gray-100 focus:ring-blue-500 disabled:opacity-50",
+            "text-[rgb(var(--color-text))] bg-[rgba(0,0,0,0.05)] border border-transparent shadow-sm hover:bg-[rgba(0,0,0,0.1)] focus:ring-[rgb(var(--color-secondary))] disabled:opacity-50 cursor-pointer",
         ghost:
-            "text-gray-700 bg-transparent border border-transparent shadow-sm hover:bg-gray-100 focus:ring-blue-500 disabled:opacity-50",
+            "text-[rgb(var(--color-text))] bg-transparent border border-transparent shadow-sm hover:bg-[rgba(0,0,0,0.05)] focus:ring-[rgb(var(--color-secondary))] disabled:opacity-50 cursor-pointer",
         link:
-            "text-blue-600 bg-transparent border border-transparent shadow-none hover:underline focus:ring-blue-500 disabled:opacity-50",
+            "text-[rgb(var(--color-primary))] bg-transparent border border-transparent shadow-none hover:text-[rgb(var(--color-secondary))] focus:ring-[rgb(var(--color-secondary))] disabled:opacity-50 cursor-pointer",
     };
 
     // 버튼 크기에 따른 패딩 및 폰트 크기
