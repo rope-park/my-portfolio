@@ -11,9 +11,9 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <ThemeProvider attribute="class" defaultTheme="system">
-    <div className="grid grid-rows-[auto, 1fr, auto] w-full min-w-0 min-h-screen overflow-auto relative">
+    <div className="grid grid-rows-[auto, 1fr, auto] w-full min-w-0 min-h-screen overflow-auto">
       <Header />
-      <main className="grid grid-cols-[auto] w-full min-w-0 min-h-screen px-6 py-6 m-0 overflow-auto pt-[60px]">{children}</main>
+      <main className="px-6 py-6 pt-[60px]">{children}</main>
       <Footer />
     </div>
     </ThemeProvider>
