@@ -1,37 +1,10 @@
 // about.tsx - about 페이지 컴포넌트. 사이트 기본 주소/about으로 접속 시 보여지는 화면.
 // 자기소개, 경력, 기술 스택, 학력 등의 정보 표시.
+
 import Layout from "../components/Layout";
-// import Image from "next/image";
-
-/*function About() {
-    return (
-        /*<Layout>
-            <section className="relative flex justify-center w-full min-w-0 px-1rem py-1rem">
-                <div className="flex justify-center w-full min-w-0 min-h-0">
-                    <div className="flex flex-col w-full max-w-2xl">
-                        <div className="fixed left-0 flex flex-col gap-8 pl-6 s-flex-hide top-1/2 transform-translate-y-1/2">
-                            <div className="fixed left-0 flex flex-col gap-8 pl-6 m-flex-hide top-1/2 transform-translate-y-1/2 whitespace-nowrap">
-                                <div className="flex flex-col gap-3">
-                                    {["Introduction", "Work Experience", "Studies", "Technical Skills"].map((item) => (
-                                        <div key={item} className="flex items-center gap-2 transition-all duration-200 ease-in-out cursor-pointer">
-                                            <div className="flex bg-gray-600 min-w-[2rem] h-[2px]"></div>
-                                            <span>{item}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                            <div className="flex justify-center w-full min-w-0 pl-6 s-flex-col">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </Layout>
-    );
-}
-
-export default About;*/
-
+import Image from "next/image";
+import Link from "next/link";
+/*
 // 경력 항목을 위한 컴포넌트
 const ExperienceItem = ({ title, company, period, description }
     : {
@@ -40,11 +13,10 @@ const ExperienceItem = ({ title, company, period, description }
         period: string,
         description: string
     }) => (
-    <div>
-        <h4 className="text-xl font-medium">{title}</h4>
-        <p className="text-gray-600">{company}</p>
-        <p className="text-gray-600">{period}</p>
-        <p className="mt-2">{description}</p>
+    <div className="space-y-1">
+        <h4 className="text-xl font-bold text-gray-900 dark:text-white">{title}</h4>
+        <p className="text-sm text-gray-500">{company} &bull; {period}</p>
+        <p className="text-gray-700 dark:text-gray-300">{description}</p>
     </div>
 );
 
@@ -55,68 +27,74 @@ const SkillCategory = ({ title, skills }
         skills: string[]
     }) => (
     <div>
-        <h4 className="text-xl font-medium">{title}</h4>
-        <ul className="mt-2">
+        <h4 className="text-xl font-semibold text-gray-900 dark:text-white">{title}</h4>
+        <ul className="mt-2 space-y-1">
             {skills.map((skill, index) => (
-                <li key={index}>{skill}</li>
+                <li key={index} className="text-gray-700 dark:text-gray-300">
+                    {skill}
+                </li>
             ))}
         </ul>
     </div>
 );
-
+*/
 function About() {
     return (
         <Layout>
-            <div className="about-container">
-                {/* 자기소개 섹션 */}
-                <section className="py-20">
-                    <h2 className="text-3xl font-bold">About Me</h2>
-                    <p className="mt-4 text-lg text-gray-700">
-                        안녕하세요! 저는 프론트엔드 개발자를 꿈꾸는 박주을입니다.
-                        현재는 프론트엔드 개발자로서의 역량을 키우기 위해 노력하고 있습니다.
-                    </p>
-                </section>
-
-                {/* 경력 섹션 */}
-                <section className="py-20">
-                    <h3 className="text-2xl font-semibold">Work Experience</h3>
-                    <div className="mt-4 space-y-4">
-                        <ExperienceItem
-                            title="QA 인턴"
-                            company="한국정보통신기술협회"
-                            period="2024.07 ~ 2024.12"
-                            description="GS 인증 업무 정부 주도 프로젝트 K-PaSS 인증 업무를 담당하였습니다."
+            <main className="space-y-24">
+                <section className="flex flex-col items-center justify-between gap-8 px-6 reverse pt-28 md:flex-row md:px-12">
+                    <div className="flex-1 space-y-4 text-center md:text-left">
+                        <h1 className="text-4xl font-bold text-[rgb(var(--color-text))]">Hi, I&apos;m Jueul Park.</h1>
+                        <p className="text-lg text-[rgb(var(--color-text))]">
+                            Fullstack Developer based in South Korea<br />
+                            I create modern, responsive websites and web applications.
+                        </p>
+                        <div className="flex justify-center gap-4 md:justify-start">
+                            <Link href="https://github.com/rope-park" className="text-[rgb(var(--color-primary))] hover:underline">
+                            🔗 GitHub
+                            </Link>
+                            <Link href="https://linkedin.com" className="text-[rgb(var(--color-primary))] hover:underline">
+                            🔗 LinkedIn
+                            </Link>
+                        </div>
+                    </div>
+                    <div className="flex-1">
+                        <Image
+                            src="/images/profile_temp.jpg"
+                            alt="Profile Image"
+                            width={300}
+                            height={300}
+                            className="mx-auto shadow-md rounded-xl"
                         />
                     </div>
                 </section>
 
-                {/* 기술 스택 섹션 */}
-                <section className="py-20">
-                    <h3 className="text-2xl font-semibold">Technical Skills</h3>
-                    <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-                        <SkillCategory
-                            title="Frontend"
-                            skills={["HTML, CSS, JavaScript", "React, Next.js, TailwindCSS", "Redux, Context API"]}
-                        />
-                        <SkillCategory
-                            title="Backend"
-                            skills={["Node.js, Express, Django", "MongoDB, MySQL"]}
-                        />
-                        <SkillCategory
-                            title="DevOps"
-                            skills={["Git, Docker, Kubernetes, Nginx", "AWS"]}
-                        />
+                {/* Tech Stack 섹션 */}
+                <section className="px-6 text-center md:px-12">
+                    <h2 className="mb-6 text-2xl font-semibold">🧩 Tech Stack</h2>
+                    <div className="flex flex-wrap justify-center gap-4">
+                        {["React", "Next.js", "TailwindCSS", "TypeScript", "Node.js", "Express", "MongoDB", "MySQL"].map((tech) => (
+                            <span 
+                                key={tech}
+                                className="px-4 py-2 text-sm font-medium text-blue-800 transition bg-blue-100 rounded-full shadow-sm hover:shadow-md"
+                            >
+                                {tech}
+                            </span>
+                        ))}
                     </div>
                 </section>
 
-                {/* 학력 섹션 */}
-                <section className="py-20">
-                    <h3 className="text-2xl font-semibold">Studies</h3>
-                    <p className="mt-4">
-                        한국기술교육대학교, 컴퓨터공학부 졸업 예정 (2021.03 - 2025.08)
-                    </p>
+                {/* 교육 및 경험 섹션 */}
+                <section className="px-6 md:px-12">
+                    <h2 className="mb-6 text-2xl font-semibold">🎓 Education & 💼 Experience</h2>
+                    <div className="pl-6 space-y-6 border-l-2 border-gray-300 dark:border-gray-600">
+                        <div>
+                            <h3 className="font-bold">한국기술교육대학교 컴퓨터공학부</h3>
+                            <p className="text-sm text-[rgb(var(--color-text))]">내용추가</p>
+                        </div>
+                    </div>
                 </section>
-            </div>
+            </main>
         </Layout>
     )
 }
