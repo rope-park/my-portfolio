@@ -4,6 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
+import Button from "./Button";
+import Toggle from "./Toggle";
 
 const navItems = [
     { name: "About", href: "/about" },
@@ -17,51 +19,63 @@ const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false); // 모바일 네비게이션 메뉴 오픈 상태.
     const toggleMenu = () => setIsOpen(false); // 모바일 네비게이션 메뉴 닫기.
 
+    const baseLinkStyle = "transition-colors hover:opacity-80";
+
     return (
         <>
             {/* 데스크탑 네비게이션 (768px 이상) */}
-            <nav className="items-center justify-center hidden text-gray-900 md:flex backdrop-blur-md bg-white/80 dark:bg-black/80 dark:text-white">
-                {/* 수정: 각 메뉴 아이템 앞에 아이콘 추가하기 */ }
-                <ul className="flex space-x-4 list-none md:space-x-6 lg:space-x-8">
+            <nav className="items-center justify-center hidden md:flex backdrop-blur-md bg-[rgb(var(--color-background))]/80">
+                <ul className="flex space-x-4 md:space-x-6 lg:space-x-8">
                     {navItems.map((item) => (
                         <li key={item.href}>
                             <Link
                                 href={item.href}
-                                className={`px-3 py-2 rounded-md transition-all duration-200 text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 ${pathname === item.href ? "font-semibold text-blue-600 dark dark:text-blue-400"
-                                    : "text-gray-700 dark:text-gray-300"
-                                    }
-                                   hover:bg-gray-200 dark:hover:bg-gray-800 hover:shadow-md hover:text-gray-900 dark:hover:text-gray-100`}
+                                className={`${baseLinkStyle} ${
+                                    pathname === item.href
+                                        ? "font-semibold text-[rgb(var(--color-primary))]"
+                                        : "text-[rgb(var(--color-text))]"
+                                }`}
                             >
                                 {item.name}
                             </Link>
                         </li>
                     ))}
                 </ul>
+                {/* 다크 모드 토글 버튼 */}
+                <div className="hidden ml-4 md:block">
+                    <Toggle />
+                </div>
             </nav>
 
             {/* 모바일 네비게이션 (768px 미만) */}
             < div className="md:hidden" >
-                <button onClick={() => setIsOpen(!isOpen)} className="p-2">
-                    {isOpen ? (
-                        <XMarkIcon className="w-6 h-6 text-gray-900 cursor-pointer dark:text-gray-200" />
-                    ) : (
-                        <Bars3Icon className="w-6 h-6 text-gray-900 cursor-pointer dark:text-gray-200" />
-                    )}
-                </button>
-
+                <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setIsOpen(!isOpen)}
+                    icon={
+                        isOpen ? (
+                            <XMarkIcon className="w-6 h-6" style={{ color: "rgb(var(--color-text))" }} />
+                        ) : (
+                            <Bars3Icon className="w-6 h-6" style={{ color: "rgb(var(--color-text))" }} />
+                        )
+                    }
+                    iconType="Icon"
+                    aria-label="Toggle Menu"
+                />
+                    
                 {/* 모바일 메뉴 - 오픈 상태일 때만 표시 */}
                 {isOpen && (
-                    <div className="absolute left-0 w-full bg-white shadow-md top-16 dark:bg-black">
-                        {/* 수정: 각 메뉴 아이템 앞에 아이콘 추가하기 */ }
-                        <ul className="flex flex-col items-center py-6 space-y-4 list-none">
+                    <div className="absolute left-0 w-full top-16 shadow-md bg-[rgb(var(--color-background))]">
+                        <ul className="flex flex-col items-center py-6 space-y-4">
                             {navItems.map((item) => (
                                 <li key={item.href}>
                                     <Link
                                         href={item.href}
-                                        className={`block text-gray-900 transition-colors dark:text-white hover:text-gray-700 dark:hover:text-gray-300 ${
+                                        className={`${baseLinkStyle} ${
                                             pathname === item.href
-                                            ? "font-semibold text-blue-600 dark:text-blue-400"
-                                            :"text-gray-700 dark:text-gray-300"
+                                                ? "font-semibold text-[rgb(var(--color-primary))]"
+                                                : "text-[rgb(var(--color-text))]"
                                         }`}
                                         onClick={toggleMenu}
                                     >
