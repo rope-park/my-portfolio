@@ -1,7 +1,7 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
 @tailwind utilities;
-
-@custom-variant dark (&:where(.dark, .dark *));
 
 /* 다크 모드 및 전역 색상 변수 설정 */
 @layer base {
@@ -53,6 +53,11 @@
   @apply px-4 mx-auto max-w-7xl;
 }
 
+/* 전역 섹션 스타일 */
+.section {
+  @apply py-10;
+}
+
 /* HTML 요소 스타일링 */
 /* 전체 페이지 스타일 */
 html,
@@ -88,15 +93,8 @@ h3 {
 
 /* 텍스트 스타일 */
 p {
-  @apply text-[rgb(var(--color-text))] ;
+  @apply text-[rgb(var(--color-text))] dark:text-[rgb(var(--color-text))]; ;
 }
-
-/*
-button {
-  @apply inline-block px-4 py-2 text-lg font-medium text-white bg-[rgb(var(--color-primary))] rounded-md shadow-md
-         hover:bg-[rgb(var(--color-secondary))] transition-colors focus:ring-2 focus:ring-[rgb(var(--color-secondary))] focus:outline-none cursor-pointer;
-}
-*/
 
 /* 리스트 스타일 */
 ul {
