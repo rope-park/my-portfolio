@@ -1,3 +1,4 @@
+/* globals.tsx - 전역 스타일 설정 */
 @import "tailwindcss";
 @tailwind base;
 @tailwind components;
@@ -45,6 +46,22 @@
 @layer utilities {
   .shadow-text {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  }
+
+  .shake {
+    animation: shake 0.25s ease-in-out;
+  }
+
+  @keyframes shake {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    25%, 75% {
+      transform: translateX(-4px);
+    }
+    50% {
+      transform: translateX(4px);
+    }
   }
 }
 
