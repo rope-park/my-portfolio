@@ -4,18 +4,19 @@
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
 
 interface ProjectCardProps {
-    title: string;
-    description: string;
-    imageUrl: string;
-    techStack: string[];
-    githubUrl?: string;
-    demoUrl?: string;
+    title: string; // 프로젝트 제목
+    description: string; // 프로젝트 설명
+    imageUrl: string; // 프로젝트 이미지 URL
+    techStack: string[]; // 기술 스택
+    githubUrl?: string; // 깃허브 URL
+    demoUrl?: string; // 데모 URL
     slug: string; // 프로젝트 상세 페이지로 이동하기 위한 slug.
 }
 
-const ProjectCard = ({
+function ProjectCard({
     title,
     description,
     imageUrl,
@@ -23,54 +24,52 @@ const ProjectCard = ({
     githubUrl,
     demoUrl,
     slug
-}: ProjectCardProps) => {
+}: ProjectCardProps) {
     return (
-        <div className="relative flex flex-col items-start justify-between transition-shadow bg-white border border-gray-200 shadow-sm rounded-2xl dark:bg-gray-900 dark:border-gray-700 hover:shadow-lg">
+        // 애니메이션 효과를 위한 motion.div 사용
+        <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.3 }}
+            className="bg-[rgb(var(--color-background))] rounded-lg shadow-md hover:shadow-xl p-4 transition-all"
+        >
             {/*  프로젝트 이미지 섹션 */}
             <Link
-                href={slug ? `/projects/${slug}` : "#"}
-            >
-                <div className="relative w-full h-56 overflow-hidden cursor-pointer">
+                href={slug ? `/projects/${slug}` : "#"}>
+                <div className="relative w-full h-48 mb-4 overflow-hidden rounded-lg cursor-pointer">
                     <Image
                         src={imageUrl}
                         alt={title}
                         fill
-                        className="object-cover rounded-t-2xl"
+                        className="object-cover duration-500 rounded-lg transtition-transform hover:scale-105 rounded-t-2xl"
                         sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                     />
                 </div>
             </Link>
 
             {/* 프로젝트 정보 섹션 */}
-            <div className="flex flex-col flex-grow p-4">
-                <h3 className="text-gray-900 dark:text-white">
-                    {title}
-                </h3>
-                <p className="flex-grow mt-2 text-gray-600 dark:text-gray-300">
-                    {description}
-                </p>
+            <h3 className="text-lg font-semibold text-[--color-grape] mb-1">
+                {title}
+            </h3>
+            <div className="flex flex-wrap gap-2 text-sm text-[--color-sky-blue]">
+                {techStack.map((tag, index) => (
+                    <span key={index}>#{tag}</span>
+                ))}
+            </div>
 
-                {techStack.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mt-3">
-                        {techStack.map((tech, index) => (
-                            <span
-                                key={index}
-                                className="px-3 py-1 text-sm font-medium text-gray-700 bg-gray-200 rounded-full dark:text-gray-300 dark:bg-gray-800"
-                            >
-                                {tech}
-                            </span>
-                        ))}
-                    </div>
-                )}
+            <p className="text-sm text-[(var(--color-text))] opacity-90 mt-2">
+                {description}
+            </p>
 
+            <div className="flex gap-3 mt-4 text-sm">
                 {/* 프로젝트 링크 섹션 */}
                 {(githubUrl || demoUrl) && (
-                    <div className="flex mt-4 space-x-4">
+                    <div className="flex gap-4 mt-2 text-sm">
                         {githubUrl && (
                             <Link
                                 href={githubUrl}
                                 target="_blank"
-                                className="flex text-blue-600 hover:underline dark:text-blue-400"
+                                className="flex text-[rgb(var(--color-french-violet))] hover:underline"
                             >
                                 GitHub
                             </Link>
@@ -79,7 +78,7 @@ const ProjectCard = ({
                             <Link
                                 href={demoUrl}
                                 target="_blank"
-                                className="flex text-green-600 hover:underline dark:text-green-400"
+                                className="flex text-[rgb(var(--color-aero))] hover:underline"
                             >
                                 Live Demo
                             </Link>
@@ -87,7 +86,7 @@ const ProjectCard = ({
                     </div>
                 )}
             </div>
-        </div>
+        </motion.div >
     );
 };
 
