@@ -1,21 +1,56 @@
 // contact.tsx - 연락처 화면.
+
+"use client";
+
+import { motion } from "framer-motion";
 import Layout from "../components/Layout";
+import Form from "../components/Form";
 
 function Contact() {
     return (
         <Layout>
-            <div className="contact-container">
-                {/* 연락처 섹션 */}
-                <section className="py-20">
-                    <h1 className="mb-4 text-3xl font-bold">Contact</h1>
-                    <p className="mb-10 text-lg text-gray-700">
-                        내용 추가
+            <section
+                id="contact"
+                className="flex flex-col items-center justify-center gap-8 pt-28"
+            >
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="text-center"
+                >
+                    <h2 className="text-3xl font-bold text-[rgb(var(--color-primary))]">
+                        Wanna Connect?
+                    </h2>
+                    <p className="text-lg mt-2 text-[rgb(var(--color-text))] opacity-80">
+                        활짝 열려 있습니다! 언제든지 연락 주세요! 💌
                     </p>
-                    <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                        
-                    </div>
-                </section>
-            </div>
+                </motion.div>
+                
+                {/* 연락 폼 */}
+                <Form />
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="mt-10 text-sm text-[rgb(var(--color-text))] space-y-2"
+                >
+                    <p>
+                        <strong>📧 Email:</strong>
+                    </p>
+                    <p>
+                        <strong>💼 LinkedIn:</strong> linkedin.com
+                    </p>
+                    <p>
+                        <strong> 🖥 GitHub:</strong> github.com/rope-park
+                    </p>
+                </motion.div>
+            </section>
         </Layout>
     );
 }
