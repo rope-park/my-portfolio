@@ -82,7 +82,9 @@ body {
   font-family: var(--font-family), sans-serif;
   font-weight: 400;
   font-style: normal;
-  @apply h-full w-full bg-[rgb(var(--color-background))] text-[rgb(var(--color-text))] leading-relaxed antialiased;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  @apply w-full h-full antialiased leading-relaxed;
 }
 
 /* 이미지 스타일 */
