@@ -50,3 +50,50 @@ export const Image: Variants = {
 export const Card: Variants = {
     
 }
+
+export const HeroSection: Variants = {
+    initial: {
+        opacity: 0,
+        y: 30,
+    },
+    animate: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.8,
+            ease: "easeOut",
+            delay: 0.2,
+        },
+    },
+    exit: {
+        opacity: 0,
+        y: -30,
+    },
+}
+
+export const AboutSection: Variants = {
+    whileHover: {
+        scale: 1.05,
+        transition: {
+            duration: 0.4,
+            type: "spring",
+            stiffness: 300,
+            damping: 20,
+        },
+    },
+}
+
+export const AboutSectionContent: Variants = {
+    initial: {
+        opacity: 0,
+        x: 40,
+    },
+    whileInView: {
+        opacity: 1,
+        x: 0,
+        transition: {
+            duration: 0.6,
+            ease: "easeOut",
+        },
+    },  
+}
